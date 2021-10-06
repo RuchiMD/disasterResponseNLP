@@ -40,6 +40,7 @@ def load_data(database_filepath):
     X = df.message.values
     Y = df[df.columns[4:]].values
     category_names = list(df.columns[4:])
+    print(Y, category_names)
     return X, Y, category_names
     
 
@@ -53,10 +54,11 @@ def tokenize(text):
     '''
     text = re.sub(r"[^a-zA-Z0-9]", " ", text)
     tokens = word_tokenize(text)
+    words = [w for w in tokens if w not in stopwords.words("english")]
     lemmatizer = WordNetLemmatizer()
 
     clean_tokens = []
-    for tok in tokens:
+    for tok in words:
         clean_tok = lemmatizer.lemmatize(tok).lower().strip()
         clean_tokens.append(clean_tok)
 
