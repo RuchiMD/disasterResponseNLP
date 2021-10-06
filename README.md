@@ -5,13 +5,18 @@ In this project, I am trying to predict the disaster category of a message. The 
 
 ##How to run the Python scripts and web app
 FOr data preparation:
-python ./data/process_data.py disaster_messages.csv disaster_categories.csv response_data.db
+python ./data/process_data.py disaster_messages.csv disaster_categories.csv data.db
 
 FOr generating model classifier:
-python ./model/train_classifier.py ../data/response_data.db model.pkl')
+python ./model/train_classifier.py ../data/data.db model_recent.pkl')
 
 For running the web app:
 python ./app/run.py
+
+Then open 'http://192.168.1.5:8000/' on your browser and you will see the following web page prompting you to type in a message.
+![image](https://user-images.githubusercontent.com/33075751/136218736-8c3b1e94-b4d5-41c2-b3ee-73c36f821680.png)
+
+The web page also provides an overview of the dataset. Further explanation about the visuals is given below 
 
 ##Explanation of the files in the repository
 1. process_data.py
