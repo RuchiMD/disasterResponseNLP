@@ -3,7 +3,7 @@
 import pandas as pd
 from sqlalchemy import create_engine
 import sys
-
+import matplotlib.pyplot as plt
 
 def load_data(messages_filepath, categories_filepath):
     '''
@@ -16,9 +16,20 @@ def load_data(messages_filepath, categories_filepath):
     messages = pd.read_csv(messages_filepath)
     categories = pd.read_csv(categories_filepath)
     df = messages.merge(categories, on = 'id')
-    print(df['genre'].value_counts())
+
     return df
 
+def visualise_data(df):
+    '''
+    function to visualise dataset
+    :param df: dataset to visualise
+    :return:
+    '''
+    print("Count of messages by genre:", df['genre'].value_counts())
+    df = df.drop(columns = ['id']#, 'related', 'military', 'aid_related', 'medical_products'])
+    df.groupby(['genre']).sum().plot(kind='bar', stacked=False)
+    plt.show()
+    print(df.groupby(['genre']).sum())
 
 def clean_data(df):
     '''
@@ -31,20 +42,22 @@ def clean_data(df):
     row = categories.iloc[0]
     category_colnames = row.apply(lambda x: x[:-2])
     categories.columns = category_colnames
-    
+
     for column in categories:
     # setting each value to be the last character of the string
         categories[column] = categories[column].astype(str).str.split("-").str[1]
     
     # converting column from string to numeric
-        categories[column] = pd.to_numeric(categories[column])#categories[column].astype(int)
+        categories[column] = pd.to_numeric(categories[column])
     
     df = df.drop(['categories'], axis=1)
     df = pd.concat([df,categories], sort=True, axis=1)
+
+    #drop duplicates from the dataset
     df=df.drop_duplicates()
     
     df.related.replace(2,1,inplace=True)
-    return df
+    return df, category_colnames
 
 
 def save_data(df, database_filename):
@@ -62,8 +75,9 @@ def main():
         df = load_data(messages_filepath, categories_filepath)
 
         print('Cleaning data...')
-        df = clean_data(df)
-        
+        df, category_colnames = clean_data(df)
+
+        visualise_data(df)
         print('Saving data...\n    DATABASE: {}'.format(database_filepath))
         save_data(df, database_filepath)
         
