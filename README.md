@@ -16,6 +16,9 @@ python ./app/run.py
 Then open 'http://192.168.1.5:8000/' on your browser and you will see the following web page prompting you to type in a message.
 ![image](https://user-images.githubusercontent.com/33075751/136218736-8c3b1e94-b4d5-41c2-b3ee-73c36f821680.png)
 
+If you type in a message eg: Need a place to stay for 40 homeless people. We get following output. 
+![image](https://user-images.githubusercontent.com/33075751/136222182-211755f8-dc20-4f60-87b3-b23976e86e3e.png)
+
 The web page also provides an overview of the dataset. Further explanation about the visuals is given below 
 
 ##Explanation of the files in the repository
