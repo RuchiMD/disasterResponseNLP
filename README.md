@@ -16,29 +16,29 @@ python ./app/run.py
 ##Explanation of the files in the repository
 1. process_data.py
 load_data(messages_filepath, categories_filepath)
->>Loads the messages and corresponding categories and merges them
+>Loads the messages and corresponding categories and merges them
 
 visualise_data(df)
->>Helps visualise the distribution of categories
+>Helps visualise the distribution of categories
 
 clean_data(df)
->>Generate individual category columns with binary values. Also drop duplicate entries
+>Generate individual category columns with binary values. Also drop duplicate entries
 
 save_data(df, database_filename)
->>>>>>create sqlite database
+>create sqlite database
 
 2. train_classfier.py
 load_data(database_filepath)
->>load the sqlite database
+>load the sqlite database
 
 tokenize(text)
->>normalise the words by making the strings case insensitive
+>normalise the words by making the strings case insensitive
 
 build_model()
->>build a grid search pipeline to train model using classifiers CountVectorizer, TfidfTransformer, MultiOutputClassifier.
+>build a grid search pipeline to train model using classifiers CountVectorizer, TfidfTransformer, MultiOutputClassifier.
 
 evaluate_model(model, X_test, Y_test, category_names)
->>evaluate the model selected by grid search
+>evaluate the model selected by grid search
 
 3. run.py
 Visualise the dataset to get a preview of distribution and relationship between categories in dataset.
