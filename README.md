@@ -4,10 +4,17 @@
 In this project, I am trying to predict the disaster category of a message. The dataset includes messages and their broad genres. It also includes 36 category lables for each message. 
 
 ##How to run the Python scripts and web app
-FOr data preparation:
+Dependencies:
+pandas
+sqlalchemy
+matplotlib
+nltk
+sklearn
+
+For data preparation:
 python ./dataPrep/process_data.py disaster_messages.csv disaster_categories.csv data.db
 
-FOr generating model classifier:
+For generating model classifier:
 python ./trainClassifier/train_classifier.py ../data/data.db model_recent.pkl')
 
 For running the web app:
