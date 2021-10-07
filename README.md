@@ -62,7 +62,7 @@ The average precision offered by the model is 81%.
 ![result](https://user-images.githubusercontent.com/33075751/136200953-c4629013-3868-4b9b-9e3a-1cbd9f1df61b.PNG)
 
 3. run.py
-Visualise the dataset to get a preview of distribution and relationship between categories in dataset.
+Visualise the dataset to get a preview of distribution and relationship between categories in dataset. 
 We have various graphs to visualise the dataset:
 >1. count of messages acroos different genres of messages
 ?2. Sort message categories across all genres from most popular to least. We can see that the dataset is biased. Some categories are not represented at all. 
