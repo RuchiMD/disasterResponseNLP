@@ -2,6 +2,7 @@
 
 import pandas as pd
 from sqlalchemy import create_engine
+import os
 import sys
 import matplotlib.pyplot as plt
 
@@ -26,7 +27,7 @@ def visualise_data(df):
     :return:
     '''
     print("Count of messages by genre:", df['genre'].value_counts())
-    df = df.drop(columns = ['id']#, 'related', 'military', 'aid_related', 'medical_products'])
+    df = df.drop(columns = ['id'])#, 'related', 'military', 'aid_related', 'medical_products'])
     df.groupby(['genre']).sum().plot(kind='bar', stacked=False)
     plt.show()
     print(df.groupby(['genre']).sum())
@@ -61,6 +62,9 @@ def clean_data(df):
 
 
 def save_data(df, database_filename):
+    if os.path.exists(database_filename):
+        database_filename = database_filename.split('.')[0]+'_1.'+database_filename.split('.')[1]
+        print("Database already exists in directory. Saving it as ", database_filename)
     engine = create_engine('sqlite:///'+ database_filename)
     df.to_sql('FigureEight', engine, index=False)  
 
