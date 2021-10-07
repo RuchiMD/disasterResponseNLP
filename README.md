@@ -5,10 +5,10 @@ In this project, I am trying to predict the disaster category of a message. The 
 
 ##How to run the Python scripts and web app
 FOr data preparation:
-python ./data/process_data.py disaster_messages.csv disaster_categories.csv data.db
+python ./dataPrep/process_data.py disaster_messages.csv disaster_categories.csv data.db
 
 FOr generating model classifier:
-python ./model/train_classifier.py ../data/data.db model_recent.pkl')
+python ./trainClassifier/train_classifier.py ../data/data.db model_recent.pkl')
 
 For running the web app:
 python ./app/run.py
