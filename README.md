@@ -1,23 +1,23 @@
-# disasterResponseNLP
-##summary of the project
+# DisasterResponseNLP
+## Summary of the project
 
 In this project, I am trying to predict the disaster category of a message. The dataset includes messages and their broad genres. It also includes 36 category lables for each message. 
 
-##How to run the Python scripts and web app
-Dependencies:
+## How to run the Python scripts and web app
+## Dependencies:
 pandas
 sqlalchemy
 matplotlib
 nltk
 sklearn
 
-For data preparation:
+## For data preparation:
 python ./dataPrep/process_data.py disaster_messages.csv disaster_categories.csv data.db
 
-For generating model classifier:
+## For generating model classifier:
 python ./trainClassifier/train_classifier.py ../data/data.db model_recent.pkl')
 
-For running the web app:
+## For running the web app:
 python ./app/run.py
 
 Then open 'http://192.168.1.5:8000/' on your browser and you will see the following web page prompting you to type in a message.
@@ -28,7 +28,7 @@ If you type in a message eg: Need a place to stay for 40 homeless people. We get
 
 The web page also provides an overview of the dataset. Further explanation about the visuals is given below 
 
-##Explanation of the files in the repository
+## Explanation of the files in the repository
 1. process_data.py
 load_data(messages_filepath, categories_filepath)
 >Loads the messages and corresponding categories and merges them
